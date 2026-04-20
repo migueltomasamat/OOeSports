@@ -8,7 +8,7 @@ CREATE TABLE equipos (
                          win_rate FLOAT DEFAULT 0
 );
 
--- Tabla para la clase Jugador
+-- Tabla para la clase JugadorController
 CREATE TABLE jugadores (
                            id INT PRIMARY KEY,
                            nombre VARCHAR(255) NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE torneos (
                          premio_total FLOAT DEFAULT 0
 );
 
--- Tabla intermedia para la relación Jugador "tiene favoritos" Equipo (N:M)
+-- Tabla intermedia para la relación JugadorController "tiene favoritos" Equipo (N:M)
 CREATE TABLE jugador_favoritos (
                                    jugador_id INT NOT NULL,
                                    equipo_id INT NOT NULL,
