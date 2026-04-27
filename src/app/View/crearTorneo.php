@@ -12,7 +12,7 @@
     <label for="inputFecha">Fecha del torneo</label>
     <input type="date" name="fecha" id="inputFecha">
     <label for="inputPremio">Premio del torneo</label>
-    <input type="number" name="premio" step="0.01" id="inputPremio">
+    <input type="number" name="premio_total" step="0.01" id="inputPremio">
 
     <input type="submit">
 

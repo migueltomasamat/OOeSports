@@ -130,12 +130,25 @@ class Torneo
     public static function createFromArray(array $data):Torneo
     {
         $torneo = new Torneo();
-        $torneo->setId(TorneoModel::obtenerID());
+        if (isset($data['id'])){
+            //Esto es una actualización
+            $torneo->setId($data['id']);
+        }else{
+            //Esto es una creación de un nuevo torneo
+            $torneo->setId(TorneoModel::obtenerID());
+        }
+
         $torneo->setNombre($data['nombre']);
         $torneo->setFecha(DateTime::createFromFormat('Y-m-d',$data['fecha']));
-        $torneo->setPremioTotal($data['premio']);
+        $torneo->setPremioTotal($data['premio_total']);
 
         return $torneo;
     }
+
+    public function borrar(){
+        TorneoModel::borrarTorneo($this->id);
+    }
+
+
 
 }

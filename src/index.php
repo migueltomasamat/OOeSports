@@ -23,7 +23,7 @@ $router->get('/torneo/{idTorneo}',[TorneoController::class,'show']);
 $router->post('/torneo',[TorneoController::class,'store']);
 $router->get('/torneo/{idTorneo}/edit',[TorneoController::class,'edit']);
 $router->put('/torneo/{idTorneo}',[TorneoController::class,'update']);
-$router->delete('/torneo',[TorneoController::class,'delete']);
+$router->delete('/torneo/{idTorneo}',[TorneoController::class,'delete']);
 
 $router->get('/equipo',[EquipoController::class,'index']);
 $router->get('/equipo/create',[EquipoController::class,'create']);
