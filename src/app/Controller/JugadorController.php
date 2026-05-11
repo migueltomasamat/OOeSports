@@ -24,6 +24,7 @@ class JugadorController implements ControllerInterface
 
     public function store()
     {
+        $entrada=json_decode(file_get_contents('php:://input'),true);
         // TODO: Implement store() method.
     }
 

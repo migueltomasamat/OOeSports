@@ -57,6 +57,20 @@ class Equipo
         return $this;
     }
 
+    public static function createFromArray (array $datos):Equipo{
+        $equipo = new Equipo();
+        if (isset($datos['id'])){
+            //Este viene de la base de datos
+            $equipo->setId($datos['id']);
+        }else{
+            //Este me lo han pasado desde un formulario o Postman
+            $equipo->setId(JugadorModel::nextId());
+        }
+        $equipo->setNombre($datos['nombre']);
+        $equipo->setRegion($datos['region']);
+        $equipo->setWinRate($datos['winrate']);
+        return $equipo;
+    }
 
 
 

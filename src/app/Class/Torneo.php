@@ -135,7 +135,7 @@ class Torneo
             $torneo->setId($data['id']);
         }else{
             //Esto es una creación de un nuevo torneo
-            $torneo->setId(TorneoModel::obtenerID());
+            $torneo->id=TorneoModel::obtenerID();
         }
 
         $torneo->setNombre($data['nombre']);

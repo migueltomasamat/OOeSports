@@ -1,14 +1,14 @@
 <?php
-
 namespace App\Model;
 
 use App\Class\Torneo;
+use App\Exception\TorneoException;
 use PDO;
 use PDOException;
 
 class TorneoModel
 {
-    public static function obtenerID():int{
+    public static function obtenerID(){
 
         try {
             $conexion = new PDO('mysql:host=mariadb;dbname=examen', 'alumno', 'alumno');
@@ -58,7 +58,7 @@ class TorneoModel
             $conexion = new PDO('mysql:host=mariadb;dbname=examen', 'alumno', 'alumno');
             $conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         }catch (\PDOException $e){
-            return $e->getMessage();
+            throw new TorneoException("Se ha producido un fallo al conectar a la BD");
         }
 
         $sql = "UPDATE torneos SET nombre=?, fecha=STR_TO_DATE(?,'%Y-%c-%d'),premio_total=? WHERE id=?";

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Class\Torneo;
+use App\Exception\TorneoException;
 use App\Model\TorneoModel;
 
 class TorneoController
@@ -49,8 +50,11 @@ class TorneoController
         $put = json_decode(file_get_contents('php://input'),true);
         $put['id']=$idTorneo;
         $nuevosDatosTorneo = Torneo::createFromArray($put);
-
-        $resultado = TorneoModel::modificarTorneo($nuevosDatosTorneo);
+        try {
+            $resultado = TorneoModel::modificarTorneo($nuevosDatosTorneo);
+        }catch (TorneoException $e){
+            return $e->getMessage();
+        }
         if ($resultado){
             return "Todo Ok";
         }else{

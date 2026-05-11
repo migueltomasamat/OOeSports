@@ -2,6 +2,8 @@
 
 namespace App\Class;
 
+use App\Model\JugadorModel;
+
 class Jugador
 {
     private int $id;
@@ -82,6 +84,28 @@ class Jugador
         return $this;
     }
 
+    public static function createFromArray (array $datos):Jugador{
+
+        $jugador = new Jugador();
+        if (isset($datos['id'])){
+            //Este viene de la base de datos
+            $jugador->setId($datos['id']);
+        }else{
+            //Este me lo han pasado desde un formulario o Postman
+            $jugador->setId(JugadorModel::nextId());
+        }
+        $jugador->setNombre($datos['nombre']);
+        $jugador->setEmail($datos['email']);
+        $jugador->setNickname($datos['nickname']);
+        if (isset($datos['nivel'])) {
+            $jugador->setNivel($datos['nivel']);
+        }
+        if (isset($datos['equipos_favoritos'])){
+            $jugador->setEquiposFavoritos($datos['equipos_favoritos']);
+        }
+        return $jugador;
+
+    }
 
 
 
